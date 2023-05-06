@@ -1,0 +1,67 @@
+{% include "header.html" %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row justify-content-center">
+			<div class="col-md-6">
+				<div class="form-card">
+					<form action="{{ url_for('total_distance') }}" method="POST">
+						<div class="mb-4">
+							<select class="form-select" id="yearSelect" name="yearSelect">
+								<option value="" {% if selected_year == 0 %}selected{% endif %} hidden>Select Year</option>
+								{% for year in year_list %}
+										<option value="{{year}}" {% if year == selected_year %}selected{% endif %}>{{year}}</option>
+								{% endfor %}
+							</select>
+						</div>
+						<div class="my-2">
+							<button type="submit" name="submit" class="btn btn-dark">Calculate</button>
+						</div>
+					</form>
+				</div>
+			</div>
+	</div>
+</div>
+
+{% if img_path is not none %}
+
+<div class="container my-3">
+	<img class="img-fluid mx-auto d-block" src="{{ img_path}} " alt="Total Distance Traveled by Airlines in {{ selected_year }}"/>
+</div>
+
+{% endif %}
+
+
+{% if airline_distance_list is not none %}
+
+<div class="container my-4">
+<div class="table-responsive">
+
+<table class="table table-dark table-bordered table-striped yearly_distance_table">
+	<thead>
+		<tr>
+			<th>Airline Name</th>
+			<th>Distance (miles)</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for row in airline_distance_list.collect() %}
+			<tr>
+				<td>{{ row.Airline }}</td>
+				<td>{{ row.Total_Distance }}</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+</div>
+</div>
+
+{% endif %}
+
+{% endblock %}
+
+{% include "footer.html" %}
+
+

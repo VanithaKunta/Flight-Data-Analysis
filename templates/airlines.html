@@ -1,0 +1,34 @@
+{% include "header.html" %}
+
+{% block content %}
+
+<!-- Full Page Image Header with Vertically Centered Content -->
+<header class="masthead"> </header>
+
+<div class="container my-4">
+<div class="table-responsive">
+
+<table class="table table-dark table-bordered table-striped airlines_table">
+  <thead>
+  <tr>
+    <th>Airline Code</th>
+    <th>Name of the Airline</th>
+  </tr>
+  </thead>
+  <tbody>
+        {% for airline in airlines %}
+			<tr>
+				<td>{{ airline.Operating_Airline }}</td>
+				<td>{{ airline.Airline }}</td>
+			</tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+</div>
+</div>
+{% endblock %}
+
+{% include "footer.html" %}
+
+

@@ -1,0 +1,147 @@
+{% include "header.html" %}
+
+{% block content %}
+
+<div class="tab-style m-4">
+    <ul class="nav nav-tabs" id="myTab">
+        <li class="nav-item">
+            <a href="#home" class="nav-link active" data-bs-toggle="tab">Delays</a>
+        </li>
+        <li class="nav-item">
+            <a href="#profile" class="nav-link" data-bs-toggle="tab">Delay Groups</a>
+        </li>
+        <li class="nav-item">
+            <a href="#airport" class="nav-link" data-bs-toggle="tab">Airports</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="home">
+            <div class="my-3">
+                <h5 class="my-3">Average Delay by Day of Week, Month, Year and Airline</h5>
+                <img src="{{ image_file }}" alt="Flight Delays" class="img-fluid">
+            </div>
+
+            <div class="my-4">
+                <h5>Average Delay by Day of Week</h5>
+                <div class="table-responsive">
+
+                    <table class="table table-dark table-bordered table-striped yearly_distance_table">
+                        <thead>
+                        <tr>
+                            <th>Day of Week</th>
+                            <th>Average Delay (in minutes)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in range(7) %}
+                        <tr>
+                            <td>{{ data['avg_delay_by_dayofweek']['DayOfWeek'][i] }}</td>
+                            <td>{{ data['avg_delay_by_dayofweek']['AvgDelay'][i]|round(2) }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="my-4">
+                <h5>Average Delay by Month</h5>
+                <div class="table-responsive">
+
+                    <table class="table table-dark table-bordered table-striped yearly_distance_table">
+                        <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>Average Delay (in minutes)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in range(12) %}
+                        <tr>
+                            <td>{{ data['avg_delay_by_month']['Month'][i] }}</td>
+                            <td>{{ data['avg_delay_by_month']['AvgDelay'][i]|round(2) }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="my-4">
+                <h5>Average Delay by Year</h5>
+                <div class="table-responsive">
+
+                    <table class="table table-dark table-bordered table-striped yearly_distance_table">
+                        <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Average Delay (in minutes)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in range(5) %}
+                        <tr>
+                            <td>{{ data['avg_delay_by_year']['Year'][i] }}</td>
+                            <td>{{ data['avg_delay_by_year']['AvgDelay'][i] }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="my-4">
+                <h5>Average Delay by Airline</h5>
+                <div class="table-responsive">
+
+                    <table class="table table-dark table-bordered table-striped yearly_distance_table">
+                        <thead>
+                        <tr>
+                            <th>Name of the Airline</th>
+                            <th>Average Delay (in minutes)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in range(28) %}
+                        <tr>
+                            <td>{{ data['avg_delay_by_airline']['Airline'][i] }}</td>
+                            <td>{{ data['avg_delay_by_airline']['AvgDelay'][i]|round(2) }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="profile">
+            <div class="mx-auto flight_results">
+                <h5 class="mt-4 text-center">Percentage of Flight Results by Year</h5>
+                {{flights_year_results_html|safe}}
+                <h5 class="mt-4 text-center">Percentage of Flight Results by Month</h5>
+                {{flights_month_results_html|safe}}
+
+                <h5 class="mt-4 text-center">Distribution of Flight Delays</h5>
+                <div class="d-flex justify-content-center">
+                <img src="{{distribution_of_flight_delays}}" alt="Distribution of flight delays" class="img-fluid"/>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="airport">
+            <div class="container my-3">
+                <img class="img-fluid mx-auto d-block" src="{{ airport_file }} " alt=""/>
+            </div>
+            <div class="container my-3">
+                <img class="img-fluid mx-auto d-block" src="{{ airport_state }} " alt=""/>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% include "footer.html" %}
+
+

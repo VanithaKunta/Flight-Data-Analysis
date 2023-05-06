@@ -1,0 +1,35 @@
+{% include "header.html" %}
+
+{% block content %}
+
+<div class="tab-style m-4">
+    <ul class="nav nav-tabs" id="myTab">
+        <li class="nav-item">
+            <a href="#home" class="nav-link active" data-bs-toggle="tab">On-Time</a>
+        </li>
+        <li class="nav-item">
+            <a href="#profile" class="nav-link" data-bs-toggle="tab">Cancelled</a>
+        </li>
+
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="home">
+             <h5 class="mt-4 text-center">Number of On-Time Flights</h5>
+                <div class="d-flex justify-content-center">
+                <img src="{{on_time_flights_by_origin_airport}}" alt="Number of On-Time Flights" class="img-fluid"/>
+                </div>
+        </div>
+        <div class="tab-pane fade" id="profile">
+             <h5 class="mt-4 text-center">Number of Cancellations by Airline</h5>
+                <div class="d-flex justify-content-center">
+                <img src="{{airline_cancellations}}" alt="Number of Cancellations by Airline" class="img-fluid"/>
+                </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% include "footer.html" %}
+
+

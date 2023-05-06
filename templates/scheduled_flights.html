@@ -1,0 +1,64 @@
+{% include "header.html" %}
+
+{% block content %}
+
+<div class="tab-style m-4">
+    <ul class="nav nav-tabs" id="myTab">
+        <li class="nav-item">
+            <a href="#home" class="nav-link active" data-bs-toggle="tab">By Year</a>
+        </li>
+        <li class="nav-item">
+            <a href="#profile" class="nav-link" data-bs-toggle="tab">By Airline</a>
+        </li>
+        <li class="nav-item">
+            <a href="#messages" class="nav-link" data-bs-toggle="tab">By Year For Each Airline</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="home">
+            {% if flights_by_year is not none %}
+
+            <div class="container my-3">
+                <img class="img-fluid mx-auto d-block" src="{{ flights_by_year }} " alt=""/>
+            </div>
+
+
+            {% endif %}
+        </div>
+        <div class="tab-pane fade" id="profile">
+            {% if scheduled_flights_by_airline is not none %}
+
+            <div class="container my-3">
+                <img class="img-fluid mx-auto d-block" src="{{ scheduled_flights_by_airline }} " alt=""/>
+            </div>
+
+            {% endif %}
+        </div>
+        <div class="tab-pane fade" id="messages">
+
+            {% if scheduled_flights_by_year_each_airline is not none %}
+
+            <div class="container my-3">
+                <img class="img-fluid mx-auto d-block" src="{{ scheduled_flights_by_year_each_airline }} " alt=""/>
+            </div>
+
+            {% endif %}
+
+            {% if timeseries_scheduled_flights_by_year is not none %}
+
+            <div class="container my-3">
+                <img class="img-fluid mx-auto d-block" src="{{ timeseries_scheduled_flights_by_year }} " alt=""/>
+            </div>
+
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% include "footer.html" %}
+
+
