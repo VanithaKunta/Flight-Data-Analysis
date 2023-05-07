@@ -2,7 +2,7 @@ from glob import glob
 import pandas as pd
 
 # Get a list of parquet files
-parquet_files = glob("static/data_clean/preprocessed_data.parquet/*.parquet")
+parquet_files = glob("../data_clean/preprocessed_data.parquet/*.parquet")
 
 # Define the subset of columns to read from the parquet files
 column_subset = [
@@ -63,4 +63,4 @@ for c in cat_cols:
     sdf[c] = sdf[c].astype("category")
 
 # Save the preprocessed data to a parquet file
-sdf.to_parquet("static/data_clean/preprocessed_data_with_delay_groups.parquet")
+sdf.to_parquet("../data_clean/preprocessed_data_with_delay_groups.parquet")

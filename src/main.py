@@ -20,10 +20,10 @@ spark = SparkSession.builder\
         .getOrCreate()
 
 # Read the preprocessed data
-df = spark.read.parquet("static/data_clean/Preprocessed_Airline_Data.parquet")
+df = spark.read.parquet("../data_clean/Preprocessed_Airline_Data.parquet")
 
 # Read the preprocessed data with delay groups from the parquet file
-sdf = pd.read_parquet("static/data_clean/preprocessed_data_with_delay_groups.parquet")
+sdf = pd.read_parquet("../data_clean/preprocessed_data_with_delay_groups.parquet")
 
 def get_airlines():
     # Get the unique airlines with their airline codes
@@ -124,7 +124,7 @@ def average_delays():
     plt.tight_layout()
 
     # Save the figure as a PNG file
-    plt.savefig("static/images/flight_delays.png")
+    plt.savefig("../results/flight_delays.png")
     plt.close()
 
     # % of Flight Results by Year
@@ -140,7 +140,7 @@ def average_delays():
 
     # Save the styled dataframe as an HTML file
     flights_year_results_html = styled_sdf.to_html()
-    with open('static/images/styled_table', 'w') as f:
+    with open('../results/styled_table', 'w') as f:
         f.write(flights_year_results_html)
 
     # % of Flight Results by Month
@@ -150,7 +150,7 @@ def average_delays():
     styled_sdf = sdf_agg[col_order].style.background_gradient(cmap="Blues")
     # Save the styled dataframe as an HTML file
     flights_month_results_html = styled_sdf.to_html()
-    with open('static/images/styled_table_by_month.html', 'w') as f:
+    with open('../results/styled_table_by_month.html', 'w') as f:
         f.write(flights_month_results_html)
 
     # Average Departure deplay by Origin State Name
@@ -161,7 +161,7 @@ def average_delays():
     ax.set_title('Average Departure Delay by Origin State Name')
     ax.invert_yaxis()  # invert y-axis to show longer bars on top
     plt.subplots_adjust(left=0.3, right=0.98, top=0.95, bottom=0.1)  # adjust the margins
-    plt.savefig('static/images/avg_delay_by_origin_state.png')
+    plt.savefig('../results/avg_delay_by_origin_state.png')
     plt.close()
 
     # Average departure delay by origin airport
@@ -180,7 +180,7 @@ def average_delays():
     plt.ylabel('Average Delay (minutes)')
     plt.xticks(rotation=90)
     plt.tight_layout()
-    plt.savefig('static/images/avg_delay_by_origin_airport.png')
+    plt.savefig('../results/avg_delay_by_origin_airport.png')
     plt.close()
 
     # Distribution of Flight Delays
@@ -190,10 +190,10 @@ def average_delays():
     )
     ax1.set_xlabel("Delay Time (Minutes)")
     ax1.set_ylabel("Frequency")
-    plt.savefig('static/images/distribution_of_flight_delays.png')
+    plt.savefig('../results/distribution_of_flight_delays.png')
     plt.close()
 
-    return render_template("average_delays.html", data=data, flights_year_results_html=flights_year_results_html, flights_month_results_html=flights_month_results_html, image_file="static/images/flight_delays.png", airport_file="static/images/avg_delay_by_origin_airport.png", airport_state="static/images/avg_delay_by_origin_state.png", distribution_of_flight_delays="static/images/distribution_of_flight_delays.png")
+    return render_template("average_delays.html", data=data, flights_year_results_html=flights_year_results_html, flights_month_results_html=flights_month_results_html, image_file="../results/flight_delays.png", airport_file="../results/avg_delay_by_origin_airport.png", airport_state="../results/avg_delay_by_origin_state.png", distribution_of_flight_delays="../results/distribution_of_flight_delays.png")
 
 
 @app.route('/scheduled_flights')
@@ -207,9 +207,9 @@ def scheduled_flights():
     ax.set_title("Number of Flights in Dataset")
     ax.set_xlabel("Flights (100k)")
     plt.tight_layout()
-    plt.savefig('static/images/scheduled_flights_by_airline.png')
+    plt.savefig('../results/scheduled_flights_by_airline.png')
     plt.close()
-    scheduled_flights_by_airline = 'static/images/scheduled_flights_by_airline.png'
+    scheduled_flights_by_airline = '../results/scheduled_flights_by_airline.png'
 
     # Scheduled Flights by Year for all airlines combined
 
@@ -225,9 +225,9 @@ def scheduled_flights():
     plt.title("Scheduled Flights by Year")
 
     # Save the chart
-    plt.savefig("static/images/flights_by_year.png")
+    plt.savefig("../results/flights_by_year.png")
     plt.close()
-    flights_by_year = 'static/images/flights_by_year.png'
+    flights_by_year = '../results/flights_by_year.png'
 
     # year_counts = sdf["Year"].value_counts().reset_index().rename(columns={"index": "Year", "Year": "Count"})
 
@@ -245,8 +245,8 @@ def scheduled_flights():
     plt.title("Scheduled Flights by Year for Each Airline")
     plt.xlabel("Year")
     plt.ylabel("Count")
-    plt.savefig('static/images/scheduled_flights_by_year_each_airline.png', bbox_inches='tight')
-    scheduled_flights_by_year_each_airline = 'static/images/scheduled_flights_by_year_each_airline.png'
+    plt.savefig('../results/scheduled_flights_by_year_each_airline.png', bbox_inches='tight')
+    scheduled_flights_by_year_each_airline = '../results/scheduled_flights_by_year_each_airline.png'
 
     # Line chart for scheduled flights by year for each airline
     # Define the 5 years of interest
@@ -280,8 +280,8 @@ def scheduled_flights():
     ax1.legend(loc='center left', bbox_to_anchor=(1, 0.5))
 
     # Save the plot to an image file and show it
-    plt.savefig('static/images/timeseries_scheduled_flights_by_year.png', bbox_inches='tight')
-    timeseries_scheduled_flights_by_year = 'static/images/timeseries_scheduled_flights_by_year.png'
+    plt.savefig('../results/timeseries_scheduled_flights_by_year.png', bbox_inches='tight')
+    timeseries_scheduled_flights_by_year = '../results/timeseries_scheduled_flights_by_year.png'
 
     return render_template('scheduled_flights.html', scheduled_flights_by_airline=scheduled_flights_by_airline, flights_by_year=flights_by_year, scheduled_flights_by_year_each_airline=scheduled_flights_by_year_each_airline, timeseries_scheduled_flights_by_year=timeseries_scheduled_flights_by_year)
 
@@ -328,9 +328,9 @@ def total_distance():
         plt.xticks(rotation=90)
         plt.subplots_adjust(bottom=0.65)
 
-        plt.savefig('static/images/total_distance.png')  # save figure to file
+        plt.savefig('../results/total_distance.png')  # save figure to file
         plt.close()
-        img_path = 'static/images/total_distance.png'
+        img_path = '../results/total_distance.png'
 
     return render_template('total_distance.html',
                            year_list=year_list,
@@ -359,7 +359,7 @@ def airports():
     plt.xlabel('Airport')
     plt.ylabel('Number of On-Time Flights')
     plt.xticks(rotation=90)
-    plt.savefig('static/images/on_time_flights_by_origin_airport.png')
+    plt.savefig('../results/on_time_flights_by_origin_airport.png')
     plt.close()
 
     # Number of cancellations by airline
@@ -378,12 +378,12 @@ def airports():
     plt.xlabel("Airline")
     plt.ylabel("Number of Cancellations")
     plt.tight_layout()
-    plt.savefig('static/images/airline_cancellations.png')
+    plt.savefig('../results/airline_cancellations.png')
     plt.close()
 
     return render_template("airports.html",
-                           on_time_flights_by_origin_airport="static/images/on_time_flights_by_origin_airport.png",
-                           airline_cancellations="static/images/airline_cancellations.png")
+                           on_time_flights_by_origin_airport="../results/on_time_flights_by_origin_airport.png",
+                           airline_cancellations="../results/airline_cancellations.png")
 
 
 @app.route('/reasons')
@@ -408,10 +408,10 @@ def reasons():
     plt.xticks(rotation=45, ha='right')
     plt.title("Average Delay by Airline and Delay Type")
     plt.tight_layout()
-    plt.savefig('static/images/avg_delay_by_airline_and_delay_type.png')
+    plt.savefig('../results/avg_delay_by_airline_and_delay_type.png')
     plt.close()
 
-    return render_template("reasons.html", avg_delay_by_airline_and_delay_type="static/images/avg_delay_by_airline_and_delay_type.png")
+    return render_template("reasons.html", avg_delay_by_airline_and_delay_type="../results/avg_delay_by_airline_and_delay_type.png")
 
 
 if __name__ == "__main__":

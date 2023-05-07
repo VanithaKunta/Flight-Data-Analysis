@@ -12,7 +12,7 @@ pal = sns.color_palette()
 
 
 # Read the preprocessed data with delay groups from the parquet file
-sdf = pd.read_parquet("static/data_clean/preprocessed_data_with_delay_groups.parquet")
+sdf = pd.read_parquet("../data_clean/preprocessed_data_with_delay_groups.parquet")
 
 # Distribution of flight delays
 ax = sdf.query("DepDelayMinutes > 1 and DepDelayMinutes < 61")["DepDelayMinutes"].plot(
@@ -20,7 +20,7 @@ ax = sdf.query("DepDelayMinutes > 1 and DepDelayMinutes < 61")["DepDelayMinutes"
 )
 ax.set_xlabel("Delay Time (Minutes)")
 ax.set_ylabel("Frequency")
-ax.figure.savefig('static/images/distribution_of_flight_delays.png')
+ax.figure.savefig('../results/distribution_of_flight_delays.png')
 plt.show()
 
 
@@ -32,7 +32,7 @@ plt.bar(delay_groups.index, delay_groups.values)
 plt.title('Percentage of Delay Groups for Flights')
 plt.xlabel('Delay Group')
 plt.ylabel('Percentage of Flights')
-plt.savefig('static/images/percentage_delays_of_flights.png')
+plt.savefig('../results/percentage_delays_of_flights.png')
 plt.show()
 plt.close()
 
@@ -43,7 +43,7 @@ ax = sdf.groupby('OriginStateName')['DepDelayMinutes'].mean().sort_values().plot
 ax.set_xlabel('Average Departure Delay (minutes)')
 ax.set_ylabel('Origin State Name')
 ax.set_title('Average Departure Delay by Origin State Name')
-plt.savefig('static/images/avg_delay_by_origin_state.png')
+plt.savefig('../results/avg_delay_by_origin_state.png')
 plt.show()
 plt.close()
 
@@ -75,7 +75,7 @@ plt.xticks(range(len(months)), months)
 # Add a legend to the plot
 ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
 
-plt.savefig('static/images/avg_delay_by_month_airline.png', bbox_inches='tight')
+plt.savefig('../results/avg_delay_by_month_airline.png', bbox_inches='tight')
 plt.show()
 
 
@@ -105,7 +105,7 @@ plt.xticks(avg_delay_by_year['Year'].unique())
 # Add a legend to the plot
 ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
 
-plt.savefig('static/images/avg_delay_by_year_airline.png', bbox_inches='tight')
+plt.savefig('../results/avg_delay_by_year_airline.png', bbox_inches='tight')
 plt.show()
 
 
@@ -136,7 +136,7 @@ plt.xticks(range(len(days_of_week)), days_of_week)
 # Add a legend to the plot
 ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
 
-plt.savefig('static/images/avg_delay_by_dayofweek_airline.png', bbox_inches='tight')
+plt.savefig('../results/avg_delay_by_dayofweek_airline.png', bbox_inches='tight')
 plt.show()
 
 
@@ -157,7 +157,7 @@ ax.barh(merged_data['Airline'], merged_data['DelayPercentages'])
 ax.set_xlabel('Percentage of Delayed Flights')
 ax.set_ylabel('Airline')
 ax.set_title('Percentage of Delayed Flights by Airline')
-plt.savefig('static/images/percent_delayed_flights1.png', bbox_inches='tight')
+plt.savefig('../results/percent_delayed_flights1.png', bbox_inches='tight')
 plt.show()
 
 
@@ -173,7 +173,7 @@ ax.set_title('Percentage of Delay Groups by Airline')
 ax.set_xlabel('Airline')
 ax.set_ylabel('Percentage of Delay Groups')
 plt.xticks(rotation=90)
-plt.savefig('static/images/percent_delayed_flights2.png', bbox_inches='tight')
+plt.savefig('../results/percent_delayed_flights2.png', bbox_inches='tight')
 plt.show()
 
 
@@ -195,7 +195,7 @@ ax.set_title('Total vs Delayed Flights by Airline')
 ax.set_xlabel('Airline')
 ax.set_ylabel('Number of Flights')
 plt.xticks(rotation=90)
-plt.savefig('static/images/total_vs_delayed_flights.png', bbox_inches='tight')
+plt.savefig('../results/total_vs_delayed_flights.png', bbox_inches='tight')
 plt.show()
 
 
@@ -238,7 +238,7 @@ plt.xticks(range(len(days_of_week)), days_of_week)
 # Add a legend to the plot
 ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
 
-plt.savefig('static/images/avg_delay_by_dayofweek_top5_airlines.png', bbox_inches='tight')
+plt.savefig('../results/avg_delay_by_dayofweek_top5_airlines.png', bbox_inches='tight')
 plt.show()
 
 
@@ -280,7 +280,7 @@ plt.xticks(avg_delay_by_year['Year'].unique())
 # Add a legend to the plot
 ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
 
-plt.savefig('static/images/avg_delay_by_year_top5_airline.png', bbox_inches='tight')
+plt.savefig('../results/avg_delay_by_year_top5_airline.png', bbox_inches='tight')
 plt.show()
 
 
@@ -323,7 +323,7 @@ plt.xticks(range(len(months)), months)
 # Add a legend to the plot
 ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
 
-plt.savefig('static/images/avg_delay_by_month_top5_airline.png', bbox_inches='tight')
+plt.savefig('../results/avg_delay_by_month_top5_airline.png', bbox_inches='tight')
 plt.show()
 
 
@@ -345,7 +345,7 @@ sns.barplot(data=airline_counts, x="Airline", y="DelayGroup")
 plt.title("Number of On-time Flights by Airline (2018-2022)")
 plt.xlabel("Airline")
 plt.ylabel("Number of Flights")
-plt.savefig('static/images/on_time_flights_by_airline.png', bbox_inches='tight')
+plt.savefig('../results/on_time_flights_by_airline.png', bbox_inches='tight')
 plt.show()
 
 
@@ -362,5 +362,5 @@ ax.set_title("Number of Cancellations by Airport (Top 35)")
 ax.set_xlabel("Airport")
 ax.set_ylabel("Number of Cancellations")
 ax.tick_params(axis='x', labelrotation=90)
-plt.savefig('static/images/cancellations_by_airport.png', bbox_inches='tight')
+plt.savefig('../results/cancellations_by_airport.png', bbox_inches='tight')
 plt.show()
