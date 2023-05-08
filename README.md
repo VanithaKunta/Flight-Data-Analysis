@@ -8,7 +8,6 @@ The findings of this study may be utilized to shape initiatives aimed at enhanci
 #### 1. Introduction
 Flight Delay Analysis is an essential component of airline operations and research due to the significant impact that flight delays have on airlines, passengers, and the economy. 
 To determine the root causes or trends of flight delays, the analysis of flight delay data is the main goal of this research work. 
-By examining the effects of numerous variables including weather, air traffic management, and aircraft maintenance on flight delays, the research intends to add to the body of knowledge on flight delay analyses. 
 This research aims to provide insights into the causes of aircraft delays and propose methods for minimizing delays and enhancing airline performance via the analysis of flight delay data. 
 The association between flight delays and the many contributing variables will be investigated using a variety of statistical and machine-learning approaches. 
 Airlines, airports, and air traffic control authorities will benefit from the study's results as they create methods for reducing flight delays and enhancing customer satisfaction.
