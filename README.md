@@ -2,8 +2,7 @@
 
 #### ABSTRACT
 The goal of this data analysis project is to better serve passengers and airlines by examining and understanding the patterns and trends in flight delays and cancellations. 
-Information such as airline, departure and arrival airports, planned and real departure and arrival timings, and delay and cancellation reasons are included in the data. 
-This project intends to learn more about the causes of flight delays and cancellations, such as weather, aircraft maintenance, and air traffic management, by using descriptive statistics, data visualization, and predictive modeling. 
+Information such as airline, departure and arrival airports, planned and real departure and arrival timings, and delay and cancellations are included in the data. 
 The findings of this study may be utilized to shape initiatives aimed at enhancing punctuality and decreasing delays, which would eventually benefit passengers.
 
 #### 1. Introduction
