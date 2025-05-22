@@ -86,11 +86,7 @@ The purpose of this study was to calculate each airline's on-time flight % and a
 #### 8. Team Member Contributions
 **Vanitha Kunta:** The lead developer responsible for developing and implementing the technical strategy for the project including selecting the right tools and effectively implementing them, and for preparing and delivering the presentation to the class.
 
-**Abhigna Reddy Mareddy:** Responsible for collecting the data and preprocessing the dataset, making changes like adding new columns, extract new columns from existing, removing unnecessary columns.
-
-**Krishna Saketh Channa:** Responsible for conducting research related to the project's topic. Responsible for testing the Distance feature, airline location and delay reasons.
-
-**Manish Kumar Brungi:** Reviewed the code, conducted research related to the project, and developed a User Interface for the project.
+**Akhil Yalla:** Responsible for collecting the data and preprocessing the dataset, making changes like adding new columns, extract new columns from existing, removing unnecessary columns. Responsible for conducting research related to the project's topic. Responsible for testing the Distance feature, airline location and delay reasons. Reviewed the code, conducted research related to the project, and developed a User Interface for the project.
 
 
 
