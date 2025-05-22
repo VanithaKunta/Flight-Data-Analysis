@@ -1,8 +1,5 @@
 # Flight-Data-Analysis
 
-#### Demo link: 
-https://drive.google.com/file/d/1J57u9wTbK0sr5HprUMydKia2MGDtRAjD/view?usp=sharing
-
 #### ABSTRACT
 The goal of this data analysis project is to better serve passengers and airlines by examining and understanding the patterns and trends in flight delays and cancellations. 
 Information such as airline, departure and arrival airports, planned and real departure and arrival timings, and delay and cancellations are included in the data. 
